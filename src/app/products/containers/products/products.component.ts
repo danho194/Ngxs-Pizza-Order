@@ -28,6 +28,6 @@ export class ProductsComponent implements OnInit {
   @Select((state: any) => state.pizzasState.pizzas)
   pizzas$: Observable<any[]>;
   constructor(private store: Store) {}
-
+    
   ngOnInit() {}
 }

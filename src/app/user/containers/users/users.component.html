@@ -1,0 +1,26 @@
+<h1>Users</h1>
+
+<div *ngIf="loading">
+	Loading...
+</div>
+<div *ngIf="!loading">
+
+
+	<div *ngIf="users$">
+		<div *ngFor="let user of users$ | async">
+      <p>User # {{ user.id }}</p>
+      <p>{{ user.first_name + ' ' + user.last_name }}</p>
+      <a [routerLink]="['/users', user.id]">Go to user details</a> 
+      </div>
+      <button (click)="onClick()">Click</button>
+	</div>
+
+	<div *ngIf="!users$">No posts found</div>
+</div>
+
+<!-- <div *ngIf="error">
+  An error occurred: {{error.message}}
+</div> -->
+
+
+

@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { Actions, ofActionDispatched } from '@ngxs/store';
+import { Actions, ofActionDispatched, State } from '@ngxs/store';
 
 //------ router model -------
 export interface RouterStateModel {
@@ -9,6 +9,8 @@ export interface RouterStateModel {
   query?: object;
   extras?: NavigationExtras;
 }
+
+
 
 //---- router action ------
 export class Go {
@@ -23,7 +25,14 @@ export class Back {
 export class Forward {
   static readonly type = '[Router] Forward';
 }
-
+@State<RouterStateModel>({
+  name: 'routersState',
+  defaults: {
+    path: null,
+    query: null,
+    extras: null,  
+  }
+})
 @Injectable()
 export class RouterHandler {
   constructor(

@@ -47,6 +47,7 @@ const ROUTES: Route[] = [
     RouterModule.forChild(ROUTES),
     NgxsModule.forFeature(ProductsState),
     HttpClientModule,
+    
     ReactiveFormsModule
   ],
   providers: [
