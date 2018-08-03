@@ -2,7 +2,9 @@ import { Select, Store } from '@ngxs/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RouteHandler } from '../../../router/store/router.handler';
-import { Navigate } from '../../../../../node_modules/@ngxs/router-plugin';
+import { Navigate } from '@ngxs/router-plugin';
+import { User } from '../../store/model';
+import { UserService } from '../../services';
 //import { RouteHandler } from 'src/app/router/store/router.handler';
 @Component({
   selector: 'app-users',
@@ -15,15 +17,15 @@ export class UsersComponent implements OnInit {
 
   @Select((s: any) => {
      return s.usersState.users}
-    )
-  users$: Observable<any[]>;
-  constructor(private store: Store, route: RouteHandler) {
-    const t = store;
-    
-    t;
-    const r = route;
-    r;
-    
+    ) users$: Observable<User[]>;
+
+    @Select((s: any) => {
+      return s.usersState.loading}
+     ) loading$: Observable<boolean>;
+
+     l$: Observable<boolean>;
+  constructor(private store: Store, userService: UserService) {
+     userService.requestUsers();
   }
 
   ngOnInit() {}

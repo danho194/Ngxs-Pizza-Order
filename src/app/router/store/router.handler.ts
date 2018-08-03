@@ -64,6 +64,8 @@ export class RouteHandler {
     {
       let t = payload;
       t;
+      let s = router.routerState;
+      s;
     });    
     this.actions$
     .pipe(ofActionDispatched(RouterNavigation))

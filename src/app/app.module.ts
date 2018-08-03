@@ -25,7 +25,7 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 // bootstrap
 // routes
 export const ROUTES: Route[] = [
-  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
   {
     path: 'products',
     loadChildren: './products/products.module#ProductsModule'

@@ -15,7 +15,7 @@ export class DataService {
 
    getUsers(): Observable<User[]> {
      return this.http.get<UserResult>(
-     `${this.API_BASE_URL}users?page=2`
+     `${this.API_BASE_URL}users?page=2&delay=2`
     )  .pipe(map(result => result.data));
   }
 }

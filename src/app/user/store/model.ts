@@ -15,7 +15,10 @@ export interface User {
 
 export interface UsersStateModel {
     users: User[];
-    loaded: boolean;
+    //loaded: boolean;
     loading: boolean;
     selectedUserId: number;
   }
+
+export type allowCaching = boolean;
+

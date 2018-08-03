@@ -1,10 +1,11 @@
-import { User } from './model';
+import { User, allowCaching } from './model';
 
 //maybe actions shouldn't be in the store
 
 // load user actions
 export class LoadUsers {
   static readonly type = '[UserList cmp] Load Users';
+  constructor(public readonly payload?: allowCaching) {}
 }
 export class LoadUsersSuccess {
   static readonly type = '[UserList cmp] Load Users Success';

@@ -1,3 +1,9 @@
+<div *ngIf="loading$ | async">
+	<p>Loading...</p>
+</div>
+
 <p>
-  user.details works!
+  User:
+  {{user$ | async | json}}
+  
 </p>

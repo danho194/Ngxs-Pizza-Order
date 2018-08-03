@@ -1,7 +1,7 @@
-import { RouteHandler } from './../router/store/router.handler';
+import { RouteHandler } from '../router/store/router.handler';
 import { ApiService } from './services/api.service';
 
-import { UsersGuard, UserExistsGuard } from './store/guard';
+import { UserGuard } from './store/guard';
 import { UsersComponent } from './containers/users/users.component';
 import { UserDetailsComponent } from './containers/user.details/user.details.component';
 import { SharedModule } from '../shared/shared.module';
@@ -9,24 +9,25 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Route, RouterModule } from '@angular/router';
+import { Route, RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { NgxsModule } from '@ngxs/store';
 import { UsersState } from './store';
 import { DataService } from '../shared/services';
-import { RouterModule as RModule} from '../router/router.module';
-
+//import { RouterModule as RModule} from '../router/router.module';
+import { UserService } from './services/user.service';
 
 
 const ROUTES: Route[] = [
   {
     path: '',
-    canActivate: [UsersGuard],
-    component: UsersComponent
+    //canActivate: [GetUsersGuard],
+    component: UsersComponent,
+   
   },
 
   {
     path: ':userId',
-    canActivate: [UserExistsGuard],
+    canActivate: [UserGuard],
     component: UserDetailsComponent
   }
 ];
@@ -43,14 +44,13 @@ const ROUTES: Route[] = [
     NgxsModule.forFeature(UsersState),
     HttpClientModule,
     ReactiveFormsModule, 
-    RModule,
+    // RModule,
     
   ],
   providers: [
     DataService,
-    UsersGuard,
-    UserExistsGuard,
-    RouteHandler
+    UserService,
+    UserGuard,    
   ]
 })
 export class UserModule {}
